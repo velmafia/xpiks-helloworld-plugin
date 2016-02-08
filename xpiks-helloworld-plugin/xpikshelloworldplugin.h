@@ -6,6 +6,7 @@
 #include <QtPlugin>
 #include <Plugins/xpiksplugininterface.h>
 #include <Plugins/ipluginaction.h>
+#include <Plugins/iuiprovider.h>
 
 class XpiksHelloworldPlugin :
         public QObject,
@@ -29,8 +30,12 @@ public:
     virtual bool executeAction(int actionID);
 
 public:
+    virtual void initializePlugin();
+
+public:
     virtual void injectCommandManager(Commands::ICommandManager *commandManager);
     virtual void injectUndoRedoManager(UndoRedo::IUndoRedoManager *undoRedoManager);
+    virtual void injectUIProvider(Plugins::IUIProvider *uiProvider);
 
 private:
     QString m_PrettyName;
@@ -40,6 +45,7 @@ private:
     QHash<int, Plugins::IPluginAction*> m_ActionsHash;
     Commands::ICommandManager *m_CommandManager;
     UndoRedo::IUndoRedoManager *m_UndoRedoManager;
+    Plugins::IUIProvider *m_UIProvider;
 };
 
 #endif // XPIKSHELLOWORLDPLUGIN_H

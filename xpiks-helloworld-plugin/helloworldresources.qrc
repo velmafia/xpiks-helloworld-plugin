@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>HelloPluginWindow.qml</file>
+    </qresource>
+</RCC>

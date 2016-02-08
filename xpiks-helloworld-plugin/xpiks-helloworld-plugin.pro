@@ -20,3 +20,6 @@ HEADERS += xpikshelloworldplugin.h \
 
 DISTFILES += \
     helloworld.json
+
+RESOURCES += \
+    helloworldresources.qrc
