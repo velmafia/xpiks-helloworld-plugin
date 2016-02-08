@@ -15,7 +15,8 @@ INCLUDEPATH += "../../xpiks/src/xpiks-qt/"
 
 SOURCES += xpikshelloworldplugin.cpp
 
-HEADERS += xpikshelloworldplugin.h
+HEADERS += xpikshelloworldplugin.h \
+    makeuserhappyaction.h
 
 DISTFILES += \
     helloworld.json

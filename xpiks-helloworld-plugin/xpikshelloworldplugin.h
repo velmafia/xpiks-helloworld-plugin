@@ -5,6 +5,7 @@
 #include <QString>
 #include <QtPlugin>
 #include <Plugins/xpiksplugininterface.h>
+#include <Plugins/ipluginaction.h>
 
 class XpiksHelloworldPlugin :
         public QObject,
@@ -22,13 +23,23 @@ public:
     virtual const QString &getPrettyName() const { return m_PrettyName; }
     virtual const QString &getVersionString() const { return m_Version; }
     virtual const QString &getAuthor() const { return m_Author; }
-    virtual void injectCommandManager(Commands::ICommandManager *commandManager) const;
-    virtual void injectUndoRedoManager(UndoRedo::IUndoRedoManager *undoRedoManager) const;
+
+public:
+    virtual const QVector<Plugins::IPluginAction*> &getExportedActions() const { return m_MyActions; }
+    virtual bool executeAction(int actionID);
+
+public:
+    virtual void injectCommandManager(Commands::ICommandManager *commandManager);
+    virtual void injectUndoRedoManager(UndoRedo::IUndoRedoManager *undoRedoManager);
 
 private:
     QString m_PrettyName;
     QString m_Version;
     QString m_Author;
+    QVector<Plugins::IPluginAction*> m_MyActions;
+    QHash<int, Plugins::IPluginAction*> m_ActionsHash;
+    Commands::ICommandManager *m_CommandManager;
+    UndoRedo::IUndoRedoManager *m_UndoRedoManager;
 };
 
 #endif // XPIKSHELLOWORLDPLUGIN_H
