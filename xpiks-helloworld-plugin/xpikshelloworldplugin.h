@@ -31,10 +31,12 @@ public:
 
 public:
     virtual void initializePlugin();
+    virtual void finalizePlugin() {}
 
 public:
     virtual void injectCommandManager(Commands::ICommandManager *commandManager);
     virtual void injectUndoRedoManager(UndoRedo::IUndoRedoManager *undoRedoManager);
+    virtual void injectArtworksSource(Common::IArtworksSource *artworksSource) {}
     virtual void injectUIProvider(Plugins::IUIProvider *uiProvider);
 
 private:
