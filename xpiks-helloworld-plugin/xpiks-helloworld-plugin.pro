@@ -13,10 +13,15 @@ CONFIG += plugin
 #DEFINES += XPIKSHELLOWORLDPLUGIN_LIBRARY
 INCLUDEPATH += "../../xpiks/src/xpiks-qt/"
 
-SOURCES += xpikshelloworldplugin.cpp
+SOURCES += xpikshelloworldplugin.cpp \
+    helloworldworker.cpp \
+    helloworldservice.cpp
 
 HEADERS += xpikshelloworldplugin.h \
-    makeuserhappyaction.h
+    makeuserhappyaction.h \
+    helloworldworker.h \
+    helloworkercommand.h \
+    helloworldservice.h
 
 DISTFILES += \
     helloworld.json
