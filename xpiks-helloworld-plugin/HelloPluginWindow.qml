@@ -10,6 +10,7 @@ import "qrc:/../StyledControls"
 
 ApplicationWindow {
     id: aboutWindow
+    objectName: "HelloWorldPlugin_0.1_Window"
     modality: "ApplicationModal"
     width: 250
     visible: true
@@ -21,7 +22,10 @@ ApplicationWindow {
     flags: Qt.Dialog
     title: qsTr("About")*/
 
-    //onClosing: dialogDestruction();
+    onClosing: {
+        // NOTE: this will not work
+        close.accepted = false
+    }
 
     function closeAbout() {
         aboutWindow.close();
@@ -50,6 +54,11 @@ ApplicationWindow {
             StyledText {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: helloWorldModel.greetingText
+            }
+
+            StyledText {
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: filteredArtItemsModel.getItemsCount()
             }
 
             Item {
