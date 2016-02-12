@@ -14,14 +14,16 @@ CONFIG += plugin
 INCLUDEPATH += "../../xpiks/src/xpiks-qt/"
 
 SOURCES += xpikshelloworldplugin.cpp \
-    helloworldworker.cpp \
-    helloworldservice.cpp
+    Worker/helloworldworker.cpp \
+    Worker/helloworldservice.cpp \
+    Model/helloworldmodel.cpp
 
 HEADERS += xpikshelloworldplugin.h \
     makeuserhappyaction.h \
-    helloworldworker.h \
-    helloworkercommand.h \
-    helloworldservice.h
+    Worker/helloworldworker.h \
+    Worker/helloworkercommand.h \
+    Worker/helloworldservice.h \
+    Model/helloworldmodel.h
 
 DISTFILES += \
     helloworld.json

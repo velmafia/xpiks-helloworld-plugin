@@ -24,8 +24,8 @@
 #include <QDebug>
 #include <QThread>
 #include "makeuserhappyaction.h"
-#include "helloworldworker.h"
-#include "helloworkercommand.h"
+#include "Worker/helloworldworker.h"
+#include "Worker/helloworkercommand.h"
 
 XpiksHelloworldPlugin::XpiksHelloworldPlugin(QObject *parent):
     QObject(parent),
@@ -48,7 +48,10 @@ bool XpiksHelloworldPlugin::executeAction(int actionID) {
         // EXECUTE ACTION
         qInfo() << "XpiksHelloworldPlugin::executeAction #" << "Executing action:" << actionID;
 
-        m_UIProvider->openWindow(QUrl(QStringLiteral("qrc:/HelloPluginWindow.qml")));
+        QHash<QString, QObject*> models;
+        models.insert("helloWorldModel", &m_HelloWorldModel);
+        m_UIProvider->openWindow(QUrl(QStringLiteral("qrc:/HelloPluginWindow.qml")),
+                                 models);
     }
 
     return true;

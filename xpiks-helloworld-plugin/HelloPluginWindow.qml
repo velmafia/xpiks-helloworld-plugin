@@ -48,20 +48,8 @@ ApplicationWindow {
             }
 
             StyledText {
-                focus: true
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: qsTr("<u>Home webpage of Xpiks</u>")
-                color: aboutMA.pressed ? Colors.defaultLightColor : Colors.artworkActiveColor
-
-                MouseArea {
-                    id: aboutMA
-                    anchors.fill: parent
-                    cursorShape: Qt.PointingHandCursor
-                    hoverEnabled: true
-                    onClicked: {
-                        Qt.openUrlExternally("http://ribtoks.github.io/xpiks/")
-                    }
-                }
+                text: helloWorldModel.greetingText
             }
 
             Item {
@@ -69,9 +57,11 @@ ApplicationWindow {
             }
 
             StyledButton {
-                text: qsTr("Close")
+                width: 100
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: qsTr("Change Model")
                 onClicked: {
-                    closeAbout()
+                    helloWorldModel.greetingText = "Changed greeting"
                 }
             }
         }

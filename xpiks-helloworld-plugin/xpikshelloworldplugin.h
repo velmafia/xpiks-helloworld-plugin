@@ -29,7 +29,8 @@
 #include <Plugins/xpiksplugininterface.h>
 #include <Plugins/ipluginaction.h>
 #include <Plugins/iuiprovider.h>
-#include "helloworldservice.h"
+#include "Worker/helloworldservice.h"
+#include "Model/helloworldmodel.h"
 
 class XpiksHelloworldPlugin :
         public QObject,
@@ -78,6 +79,7 @@ private:
     Common::IArtworksSource *m_ArtworksSource;
 
     HelloWorldService m_HelloWorldService;
+    HelloWorldModel m_HelloWorldModel;
 };
 
 #endif // XPIKSHELLOWORLDPLUGIN_H
