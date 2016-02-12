@@ -78,11 +78,6 @@ ApplicationWindow {
                 text: helloWorldModel.greetingText
             }
 
-            StyledText {
-                anchors.horizontalCenter: parent.horizontalCenter
-                text: filteredArtItemsModel.getItemsCount()
-            }
-
             Item {
                 height: 10
             }
