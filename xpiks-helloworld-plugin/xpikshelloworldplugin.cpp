@@ -30,7 +30,9 @@
 XpiksHelloworldPlugin::XpiksHelloworldPlugin(QObject *parent):
     QObject(parent),
     m_CommandManager(NULL),
-    m_UndoRedoManager(NULL)
+    m_UndoRedoManager(NULL),
+    m_UIProvider(NULL),
+    m_ArtworksSource(NULL)
 {
     qDebug() << "XpiksHelloworldPlugin::XpiksHelloworldPlugin #";
 
@@ -41,6 +43,10 @@ XpiksHelloworldPlugin::XpiksHelloworldPlugin(QObject *parent):
     MakeUserHappyAction *makeUserHappy = new MakeUserHappyAction();
     m_MyActions.push_back(makeUserHappy);
     m_ActionsHash.insert(makeUserHappy->getActionID(), makeUserHappy);
+}
+
+XpiksHelloworldPlugin::~XpiksHelloworldPlugin() {
+    qDeleteAll(m_MyActions);
 }
 
 bool XpiksHelloworldPlugin::executeAction(int actionID) {
