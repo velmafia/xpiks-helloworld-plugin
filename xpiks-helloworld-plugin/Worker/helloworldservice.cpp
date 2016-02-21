@@ -39,10 +39,15 @@ void HelloWorldService::stopService() {
 }
 
 void HelloWorldService::submitItem(Warnings::IWarningsCheckable *item) {
+    int defaultFlags = 0;
+    this->submitItem(item, defaultFlags);
+}
+
+void HelloWorldService::submitItem(Warnings::IWarningsCheckable *item, int flags) {
     if (m_Worker == NULL) { return; }
 
     item->acquire();
-    HelloWorkerCommand *command = new HelloWorkerCommand(item);
+    HelloWorkerCommand *command = new HelloWorkerCommand(item, flags);
     m_Worker->submitItem(command);
 }
 

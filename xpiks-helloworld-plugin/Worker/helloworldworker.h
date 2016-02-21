@@ -24,6 +24,7 @@
 #define HELLOWORLDWORKER_H
 
 #include <QObject>
+#include <QHash>
 #include <Common/itemprocessingworker.h>
 #include "helloworkercommand.h"
 
@@ -48,6 +49,9 @@ public slots:
 signals:
     void stopped();
     void queueIsEmpty();
+
+private:
+    QHash<qint64, int> m_ResultsHash;
 };
 
 #endif // HELLOWORLDWORKER_H

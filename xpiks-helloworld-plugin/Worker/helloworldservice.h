@@ -45,6 +45,7 @@ public:
     virtual bool isAvailable() const { return m_IsAvailable; }
 
     virtual void submitItem(Warnings::IWarningsCheckable *item);
+    virtual void submitItem(Warnings::IWarningsCheckable *item, int flags);
     virtual void submitItems(const QVector<Warnings::IWarningsCheckable*> &items);
 
 public:

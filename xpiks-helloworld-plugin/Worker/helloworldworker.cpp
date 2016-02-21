@@ -36,8 +36,22 @@ bool HelloWorldWorker::initWorker() {
 bool HelloWorldWorker::processOneItem(HelloWorkerCommand *item) {
     Warnings::IWarningsCheckable *checkable = item->getInnerItem();
 
+    int warningsFlags = 0;
+    int allCustomFlags = 1 << 30 | 1 << 29;
+
+    qint64 id = checkable->getItemID();
+    if (!m_ResultsHash.contains(id)) {
+        // heavy calculation here ...
+        warningsFlags = 1 << 30;
+        m_ResultsHash.insert(id, warningsFlags);
+    } else {
+        // return result from hash
+        warningsFlags = m_ResultsHash[id];
+    }
+
     if (!checkable->getFilepath().isEmpty()) {
-        checkable->setWarningsFlags(Common::WarningTypeNoWarnings);
+        checkable->dropWarningsFlags(allCustomFlags);
+        checkable->addWarningsFlags(warningsFlags);
     }
 
     checkable->release();

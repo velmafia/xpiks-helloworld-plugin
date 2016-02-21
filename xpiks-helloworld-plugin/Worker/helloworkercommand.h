@@ -27,16 +27,19 @@
 
 class HelloWorkerCommand {
 public:
-    HelloWorkerCommand(Warnings::IWarningsCheckable *warningsCheckable) :
-        m_WarningsCheckable(warningsCheckable)
+    HelloWorkerCommand(Warnings::IWarningsCheckable *warningsCheckable, int flags = 0) :
+        m_WarningsCheckable(warningsCheckable),
+        m_CommandFlags(flags)
     {
     }
 
 public:
     Warnings::IWarningsCheckable *getInnerItem() const { return m_WarningsCheckable; }
+    int getFlags() const { return m_CommandFlags; }
 
 private:
     Warnings::IWarningsCheckable *m_WarningsCheckable;
+    int m_CommandFlags;
 };
 
 #endif // HELLOWORKERCOMMAND_H
