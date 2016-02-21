@@ -42,6 +42,7 @@ class XpiksHelloworldPlugin :
 
 public:
     XpiksHelloworldPlugin(QObject *parent=0);
+    virtual ~XpiksHelloworldPlugin();
 
     // XpiksPluginInterface interface
 public:
