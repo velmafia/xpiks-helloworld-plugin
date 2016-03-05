@@ -26,14 +26,14 @@ void HelloWorldService::startService() {
     QObject::connect(m_Worker, SIGNAL(destroyed(QObject*)),
                      this, SLOT(workerDestroyed(QObject*)));
 
-    qInfo() << "HelloWorldService::startService #" << "Starting worker";
+    qInfo() << "Starting worker";
 
     thread->start();
 }
 
 void HelloWorldService::stopService() {
     if (m_Worker != NULL) {
-        qInfo() << "HelloWorldService::stopService #" << "Stopping worker";
+        qInfo() << "Stopping worker";
         m_Worker->stopWorking();
     }
 }

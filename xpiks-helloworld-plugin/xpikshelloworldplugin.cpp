@@ -34,7 +34,7 @@ XpiksHelloworldPlugin::XpiksHelloworldPlugin(QObject *parent):
     m_UIProvider(NULL),
     m_ArtworksSource(NULL)
 {
-    qDebug() << "XpiksHelloworldPlugin::XpiksHelloworldPlugin #";
+    qDebug() << "Construction...";
 
     m_PrettyName = QLatin1String("HelloWorldPlugin");
     m_Version = QLatin1String("v0.0.1");
@@ -52,7 +52,7 @@ XpiksHelloworldPlugin::~XpiksHelloworldPlugin() {
 bool XpiksHelloworldPlugin::executeAction(int actionID) {
     if (m_ActionsHash.contains(actionID)) {
         // EXECUTE ACTION
-        qInfo() << "XpiksHelloworldPlugin::executeAction #" << "Executing action:" << actionID;
+        qInfo() << "Executing action:" << actionID;
 
         QHash<QString, QObject*> models;
         models.insert("helloWorldModel", &m_HelloWorldModel);
@@ -64,7 +64,7 @@ bool XpiksHelloworldPlugin::executeAction(int actionID) {
 }
 
 void XpiksHelloworldPlugin::initializePlugin() {
-    qDebug() << "XpiksHelloworldPlugin::initializePlugin #";
+    qDebug() << "#";
 
     Q_ASSERT(m_CommandManager != NULL);
     Q_ASSERT(m_UndoRedoManager != NULL);
@@ -79,17 +79,17 @@ void XpiksHelloworldPlugin::initializePlugin() {
 }
 
 void XpiksHelloworldPlugin::finalizePlugin() {
-    qDebug() << "XpiksHelloworldPlugin::finalizePlugin #";
+    qDebug() << "#";
     m_HelloWorldService.stopService();
 }
 
 void XpiksHelloworldPlugin::enablePlugin() {
-    qDebug() << "XpiksHelloworldPlugin::enablePlugin #";
+    qDebug() << "#";
     m_HelloWorldService.enableService();
 }
 
 void XpiksHelloworldPlugin::disablePlugin() {
-    qDebug() << "XpiksHelloworldPlugin::disablePlugin #";
+    qDebug() << "#";
     m_HelloWorldService.disableService();
 }
 
