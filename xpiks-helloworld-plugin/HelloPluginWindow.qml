@@ -25,9 +25,7 @@ import QtQuick.Dialogs 1.1
 import QtQuick.Controls 1.1
 import QtQuick.Layouts 1.1
 
-//import "../Constants"
-import "qrc:/../Constants/Colors.js" as Colors;
-//import "../Components"
+import "qrc:/../Constants"
 import "qrc:/../StyledControls"
 
 ApplicationWindow {
@@ -54,7 +52,7 @@ ApplicationWindow {
     }
 
     Rectangle {
-        color: Colors.selectedArtworkColor
+        color: Colors.selectedArtworkBackground
         anchors.fill: parent
 
         Component.onCompleted: focus = true
