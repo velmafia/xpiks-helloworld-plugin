@@ -22,7 +22,7 @@
 
 #include "helloworldworker.h"
 #include "helloworkercommand.h"
-#include <Warnings/iwarningscheckable.h>
+#include <Common/ibasicartwork.h>
 #include <Common/flags.h>
 
 HelloWorldWorker::HelloWorldWorker(QObject *parent) : QObject(parent)
@@ -34,10 +34,10 @@ bool HelloWorldWorker::initWorker() {
 }
 
 bool HelloWorldWorker::processOneItem(HelloWorkerCommand *item) {
-    Warnings::IWarningsCheckable *checkable = item->getInnerItem();
+    Common::IBasicArtwork *checkable = item->getInnerItem();
 
     int warningsFlags = 0;
-    int allCustomFlags = 1 << 30 | 1 << 29;
+    //int allCustomFlags = 1 << 30 | 1 << 29;
 
     qint64 id = checkable->getItemID();
     if (!m_ResultsHash.contains(id)) {
@@ -50,11 +50,11 @@ bool HelloWorldWorker::processOneItem(HelloWorkerCommand *item) {
     }
 
     if (!checkable->getFilepath().isEmpty()) {
-        checkable->dropWarningsFlags(allCustomFlags);
-        checkable->addWarningsFlags(warningsFlags);
+        //checkable->dropWarningsFlags(allCustomFlags);
+        //checkable->addWarningsFlags(warningsFlags);
     }
 
-    checkable->release();
+    //checkable->release();
 
     return true;
 }

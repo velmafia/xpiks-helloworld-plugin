@@ -23,22 +23,22 @@
 #ifndef HELLOWORKERCOMMAND_H
 #define HELLOWORKERCOMMAND_H
 
-#include <Warnings/iwarningscheckable.h>
+#include <Common/ibasicartwork.h>
 
 class HelloWorkerCommand {
 public:
-    HelloWorkerCommand(Warnings::IWarningsCheckable *warningsCheckable, int flags = 0) :
-        m_WarningsCheckable(warningsCheckable),
+    HelloWorkerCommand(Common::IBasicArtwork *basicArtwork, int flags = 0) :
+        m_BasicArtwork(basicArtwork),
         m_CommandFlags(flags)
     {
     }
 
 public:
-    Warnings::IWarningsCheckable *getInnerItem() const { return m_WarningsCheckable; }
+    Common::IBasicArtwork *getInnerItem() const { return m_BasicArtwork; }
     int getFlags() const { return m_CommandFlags; }
 
 private:
-    Warnings::IWarningsCheckable *m_WarningsCheckable;
+    Common::IBasicArtwork *m_BasicArtwork;
     int m_CommandFlags;
 };
 

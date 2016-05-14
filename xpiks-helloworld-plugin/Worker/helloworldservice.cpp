@@ -38,20 +38,19 @@ void HelloWorldService::stopService() {
     }
 }
 
-void HelloWorldService::submitItem(Warnings::IWarningsCheckable *item) {
+void HelloWorldService::submitItem(Common::IBasicArtwork *item) {
     int defaultFlags = 0;
     this->submitItem(item, defaultFlags);
 }
 
-void HelloWorldService::submitItem(Warnings::IWarningsCheckable *item, int flags) {
+void HelloWorldService::submitItem(Common::IBasicArtwork *item, int flags) {
     if (m_Worker == NULL) { return; }
 
-    item->acquire();
     HelloWorkerCommand *command = new HelloWorkerCommand(item, flags);
     m_Worker->submitItem(command);
 }
 
-void HelloWorldService::submitItems(const QVector<Warnings::IWarningsCheckable *> &items) {
+void HelloWorldService::submitItems(const QVector<Common::IBasicArtwork *> &items) {
     if (m_Worker == NULL) { return; }
 
     QVector<HelloWorkerCommand*> commands;
@@ -60,8 +59,7 @@ void HelloWorldService::submitItems(const QVector<Warnings::IWarningsCheckable *
     commands.reserve(itemsLength);
 
     for (int i = 0; i < itemsLength; ++i) {
-        Warnings::IWarningsCheckable *item = items.at(i);
-        item->acquire();
+        Common::IBasicArtwork *item = items.at(i);
         HelloWorkerCommand *command = new HelloWorkerCommand(item);
         commands.append(command);
     }

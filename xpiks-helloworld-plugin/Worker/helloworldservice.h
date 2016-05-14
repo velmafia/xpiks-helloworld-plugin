@@ -26,13 +26,13 @@
 #include <QObject>
 #include <QVector>
 #include <Common/iservicebase.h>
-#include <Warnings/iwarningscheckable.h>
+#include <Common/ibasicartwork.h>
 
 class HelloWorldWorker;
 
 class HelloWorldService :
         public QObject,
-        public Common::IServiceBase<Warnings::IWarningsCheckable>
+        public Common::IServiceBase<Common::IBasicArtwork>
 {
     Q_OBJECT
 public:
@@ -43,10 +43,11 @@ public:
     virtual void stopService();
 
     virtual bool isAvailable() const { return m_IsAvailable; }
+    virtual bool isBusy() const { return false; }
 
-    virtual void submitItem(Warnings::IWarningsCheckable *item);
-    virtual void submitItem(Warnings::IWarningsCheckable *item, int flags);
-    virtual void submitItems(const QVector<Warnings::IWarningsCheckable*> &items);
+    virtual void submitItem(Common::IBasicArtwork *item);
+    virtual void submitItem(Common::IBasicArtwork *item, int flags);
+    virtual void submitItems(const QVector<Common::IBasicArtwork*> &items);
 
 public:
     void disableService() { m_IsAvailable = false; }
