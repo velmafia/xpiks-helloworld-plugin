@@ -37,6 +37,7 @@ public:
 protected:
     virtual bool initWorker();
     virtual bool processOneItem(HelloWorkerCommand *item);
+    virtual void workerStopped() {}
 
 protected:
     virtual void notifyQueueIsEmpty() { emit queueIsEmpty(); }
