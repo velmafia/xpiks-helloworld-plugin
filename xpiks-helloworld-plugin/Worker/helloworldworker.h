@@ -25,6 +25,7 @@
 
 #include <QObject>
 #include <QHash>
+#include <memory>
 #include <Common/itemprocessingworker.h>
 #include "helloworkercommand.h"
 
@@ -36,7 +37,7 @@ public:
 
 protected:
     virtual bool initWorker();
-    virtual bool processOneItem(HelloWorkerCommand *item);
+    virtual void processOneItem(std::shared_ptr<HelloWorkerCommand> &item);
     virtual void workerStopped() {}
 
 protected:

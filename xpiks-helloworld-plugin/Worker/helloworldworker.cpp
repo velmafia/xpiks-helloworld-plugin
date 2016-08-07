@@ -33,7 +33,7 @@ bool HelloWorldWorker::initWorker() {
     return true;
 }
 
-bool HelloWorldWorker::processOneItem(HelloWorkerCommand *item) {
+void HelloWorldWorker::processOneItem(std::shared_ptr<HelloWorkerCommand> &item) {
     Common::IBasicArtwork *checkable = item->getInnerItem();
 
     int warningsFlags = 0;
@@ -55,6 +55,4 @@ bool HelloWorldWorker::processOneItem(HelloWorkerCommand *item) {
     }
 
     //checkable->release();
-
-    return true;
 }

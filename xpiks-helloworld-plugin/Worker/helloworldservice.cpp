@@ -46,22 +46,21 @@ void HelloWorldService::submitItem(Common::IBasicArtwork *item) {
 void HelloWorldService::submitItem(Common::IBasicArtwork *item, int flags) {
     if (m_Worker == NULL) { return; }
 
-    HelloWorkerCommand *command = new HelloWorkerCommand(item, flags);
+    std::shared_ptr<HelloWorkerCommand> command(new HelloWorkerCommand(item, flags));
     m_Worker->submitItem(command);
 }
 
 void HelloWorldService::submitItems(const QVector<Common::IBasicArtwork *> &items) {
     if (m_Worker == NULL) { return; }
 
-    QVector<HelloWorkerCommand*> commands;
+    std::vector<std::shared_ptr<HelloWorkerCommand> > commands;
 
     int itemsLength = items.length();
     commands.reserve(itemsLength);
 
     for (int i = 0; i < itemsLength; ++i) {
         Common::IBasicArtwork *item = items.at(i);
-        HelloWorkerCommand *command = new HelloWorkerCommand(item);
-        commands.append(command);
+        commands.emplace_back(new HelloWorkerCommand(item));
     }
 
     m_Worker->submitItems(commands);

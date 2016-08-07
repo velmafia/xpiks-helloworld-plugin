@@ -9,6 +9,7 @@ QT       -= gui
 TARGET = xpiks-helloworld-plugin
 TEMPLATE = lib
 CONFIG += plugin
+CONFIG += c++11
 
 #DEFINES += XPIKSHELLOWORLDPLUGIN_LIBRARY
 INCLUDEPATH += "../../xpiks/src/xpiks-qt/"
