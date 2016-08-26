@@ -39,11 +39,11 @@ void HelloWorldService::stopService() {
 }
 
 void HelloWorldService::submitItem(Common::IBasicArtwork *item) {
-    int defaultFlags = 0;
+    Common::WarningsCheckFlags defaultFlags = Common::WarningsCheckFlags::All;
     this->submitItem(item, defaultFlags);
 }
 
-void HelloWorldService::submitItem(Common::IBasicArtwork *item, int flags) {
+void HelloWorldService::submitItem(Common::IBasicArtwork *item, Common::WarningsCheckFlags flags) {
     if (m_Worker == NULL) { return; }
 
     std::shared_ptr<HelloWorkerCommand> command(new HelloWorkerCommand(item, flags));

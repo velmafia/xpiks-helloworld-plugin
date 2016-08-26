@@ -27,12 +27,13 @@
 #include <QVector>
 #include <Common/iservicebase.h>
 #include <Common/ibasicartwork.h>
+#include <Common/flags.h>
 
 class HelloWorldWorker;
 
 class HelloWorldService :
         public QObject,
-        public Common::IServiceBase<Common::IBasicArtwork>
+        public Common::IServiceBase<Common::IBasicArtwork, Common::WarningsCheckFlags>
 {
     Q_OBJECT
 public:
@@ -46,7 +47,7 @@ public:
     virtual bool isBusy() const { return false; }
 
     virtual void submitItem(Common::IBasicArtwork *item);
-    virtual void submitItem(Common::IBasicArtwork *item, int flags);
+    virtual void submitItem(Common::IBasicArtwork *item, Common::WarningsCheckFlags flags);
     virtual void submitItems(const QVector<Common::IBasicArtwork*> &items);
 
 public:

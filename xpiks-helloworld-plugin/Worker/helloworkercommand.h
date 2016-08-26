@@ -24,10 +24,11 @@
 #define HELLOWORKERCOMMAND_H
 
 #include <Common/ibasicartwork.h>
+#include <Common/flags.h>
 
 class HelloWorkerCommand {
 public:
-    HelloWorkerCommand(Common::IBasicArtwork *basicArtwork, int flags = 0) :
+    HelloWorkerCommand(Common::IBasicArtwork *basicArtwork, Common::WarningsCheckFlags flags = Common::WarningsCheckFlags::All) :
         m_BasicArtwork(basicArtwork),
         m_CommandFlags(flags)
     {
@@ -35,11 +36,11 @@ public:
 
 public:
     Common::IBasicArtwork *getInnerItem() const { return m_BasicArtwork; }
-    int getFlags() const { return m_CommandFlags; }
+    int getFlags() const { return (int)m_CommandFlags; }
 
 private:
     Common::IBasicArtwork *m_BasicArtwork;
-    int m_CommandFlags;
+    Common::WarningsCheckFlags m_CommandFlags;
 };
 
 #endif // HELLOWORKERCOMMAND_H
