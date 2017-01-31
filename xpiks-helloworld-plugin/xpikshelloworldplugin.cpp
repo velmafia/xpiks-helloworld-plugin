@@ -29,6 +29,7 @@
 
 XpiksHelloworldPlugin::XpiksHelloworldPlugin(QObject *parent):
     QObject(parent),
+    m_TabIndex(-1),
     m_CommandManager(NULL),
     m_UndoRedoManager(NULL),
     m_UIProvider(NULL),
@@ -74,6 +75,7 @@ void XpiksHelloworldPlugin::initializePlugin() {
     Q_INIT_RESOURCE(helloworldresources);
 
     m_CommandManager->addWarningsService(&m_HelloWorldService);
+    m_TabIndex = m_UIProvider->addTab("qrc:/HelloWorldTabIcon.qml", "qrc:/HelloWorldTab.qml");
 
     m_HelloWorldService.startService();
 }
@@ -81,6 +83,9 @@ void XpiksHelloworldPlugin::initializePlugin() {
 void XpiksHelloworldPlugin::finalizePlugin() {
     qDebug() << "#";
     m_HelloWorldService.stopService();
+    if (m_TabIndex != -1) {
+        m_UIProvider->removeTab(m_TabIndex);
+    }
 }
 
 void XpiksHelloworldPlugin::enablePlugin() {

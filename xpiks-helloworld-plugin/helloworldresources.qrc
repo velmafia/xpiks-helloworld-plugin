@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>HelloPluginWindow.qml</file>
+        <file>HelloWorldTabIcon.qml</file>
+        <file>HelloWorldTab.qml</file>
     </qresource>
 </RCC>
