@@ -21,14 +21,20 @@
  */
 
 import QtQuick 2.2
-import "qrc:/../Constants"
-import "qrc:/../StyledControls"
+import "qrc:/StyledControls"
 
 Rectangle {
-    id: translatorIconWrapper
+    id: helloWorldIconWrapper
     width: 24
     height: 20
     border.color: isHighlighted ? Colors.labelActiveForeground : Colors.inactiveControlColor
     border.width: 2
     color: "transparent"
+
+    StyledText {
+        text: "hw"
+        color: helloWorldIconWrapper.border.color
+        font.pixelSize: 10
+        anchors.centerIn: parent
+    }
 }

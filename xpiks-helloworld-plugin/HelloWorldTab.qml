@@ -22,10 +22,11 @@
 
 import QtQuick 2.2
 import QtQuick.Controls 1.1
-import "qrc:/../StyledControls"
+import "qrc:/StyledControls"
 
-Item {
+Rectangle {
     anchors.fill: parent
+    color: Colors.defaultControlColor
 
     StyledText {
         anchors.centerIn: parent
