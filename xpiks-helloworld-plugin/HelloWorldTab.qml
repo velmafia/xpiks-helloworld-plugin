@@ -28,6 +28,7 @@ Item {
     anchors.fill: parent
 
     function initializeTab() {
+        // is called every time you switch to this tab
         greetingText.font.bold = true
     }
 
