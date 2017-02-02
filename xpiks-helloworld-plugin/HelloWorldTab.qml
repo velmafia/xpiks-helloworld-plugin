@@ -27,7 +27,12 @@ import "qrc:/StyledControls"
 Item {
     anchors.fill: parent
 
+    function initializeTab() {
+        greetingText.font.bold = true
+    }
+
     StyledText {
+        id: greetingText
         anchors.centerIn: parent
         text: "Hello World!"
     }

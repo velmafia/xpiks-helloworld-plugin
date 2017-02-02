@@ -35,6 +35,7 @@ Rectangle {
         text: "hw"
         color: helloWorldIconWrapper.border.color
         font.pixelSize: 10
+        anchors.verticalCenterOffset: 1
         anchors.centerIn: parent
     }
 }
