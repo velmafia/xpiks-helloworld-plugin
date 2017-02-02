@@ -71,7 +71,7 @@ private:
     QString m_Version;
     QString m_Author;
 
-    int m_TabIndex;
+    int m_InsertedTabID;
 
     QVector<Plugins::IPluginAction*> m_MyActions;
     QHash<int, Plugins::IPluginAction*> m_ActionsHash;
