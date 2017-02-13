@@ -33,7 +33,8 @@ XpiksHelloworldPlugin::XpiksHelloworldPlugin(QObject *parent):
     m_CommandManager(NULL),
     m_UndoRedoManager(NULL),
     m_UIProvider(NULL),
-    m_ArtworksSource(NULL)
+    m_ArtworksSource(NULL),
+    m_PresetsManager(NULL)
 {
     qDebug() << "Construction...";
 
@@ -71,6 +72,7 @@ void XpiksHelloworldPlugin::initializePlugin() {
     Q_ASSERT(m_UndoRedoManager != NULL);
     Q_ASSERT(m_UIProvider != NULL);
     Q_ASSERT(m_ArtworksSource != NULL);
+    Q_ASSERT(m_PresetsManager != NULL);
 
     Q_INIT_RESOURCE(helloworldresources);
 
@@ -116,4 +118,9 @@ void XpiksHelloworldPlugin::injectArtworksSource(Common::IArtworksSource *artwor
 void XpiksHelloworldPlugin::injectUIProvider(Plugins::IUIProvider *uiProvider) {
     Q_ASSERT(uiProvider != NULL);
     m_UIProvider = uiProvider;
+}
+
+void XpiksHelloworldPlugin::injectPresetsManager(KeywordsPresets::IPresetsManager *presetsManager) {
+    Q_ASSERT(presetsManager != nullptr);
+    m_PresetsManager = presetsManager;
 }

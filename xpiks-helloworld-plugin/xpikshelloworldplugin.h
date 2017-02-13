@@ -46,25 +46,26 @@ public:
 
     // XpiksPluginInterface interface
 public:
-    virtual const QString &getPrettyName() const { return m_PrettyName; }
-    virtual const QString &getVersionString() const { return m_Version; }
-    virtual const QString &getAuthor() const { return m_Author; }
+    virtual const QString &getPrettyName() const override { return m_PrettyName; }
+    virtual const QString &getVersionString() const override { return m_Version; }
+    virtual const QString &getAuthor() const override { return m_Author; }
 
 public:
-    virtual const QVector<Plugins::IPluginAction*> &getExportedActions() const { return m_MyActions; }
-    virtual bool executeAction(int actionID);
+    virtual const QVector<Plugins::IPluginAction*> &getExportedActions() const override { return m_MyActions; }
+    virtual bool executeAction(int actionID) override;
 
 public:
-    virtual void initializePlugin();
-    virtual void finalizePlugin();
-    virtual void enablePlugin();
-    virtual void disablePlugin();
+    virtual void initializePlugin() override;
+    virtual void finalizePlugin() override;
+    virtual void enablePlugin() override;
+    virtual void disablePlugin() override;
 
 public:
-    virtual void injectCommandManager(Commands::ICommandManager *commandManager);
-    virtual void injectUndoRedoManager(UndoRedo::IUndoRedoManager *undoRedoManager);
-    virtual void injectArtworksSource(Common::IArtworksSource *artworksSource);
-    virtual void injectUIProvider(Plugins::IUIProvider *uiProvider);
+    virtual void injectCommandManager(Commands::ICommandManager *commandManager) override;
+    virtual void injectUndoRedoManager(UndoRedo::IUndoRedoManager *undoRedoManager) override;
+    virtual void injectArtworksSource(Common::IArtworksSource *artworksSource) override;
+    virtual void injectUIProvider(Plugins::IUIProvider *uiProvider) override;
+    virtual void injectPresetsManager(KeywordsPresets::IPresetsManager *presetsManager) override;
 
 private:
     QString m_PrettyName;
@@ -80,6 +81,7 @@ private:
     UndoRedo::IUndoRedoManager *m_UndoRedoManager;
     Plugins::IUIProvider *m_UIProvider;
     Common::IArtworksSource *m_ArtworksSource;
+    KeywordsPresets::IPresetsManager *m_PresetsManager;
 
     HelloWorldService m_HelloWorldService;
     HelloWorldModel m_HelloWorldModel;
