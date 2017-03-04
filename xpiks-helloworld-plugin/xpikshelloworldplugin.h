@@ -61,6 +61,10 @@ public:
     virtual void disablePlugin() override;
 
 public:
+    virtual Plugins::PluginNotificationFlags getDesiredNotificationFlags() const override;
+    virtual void onPropertyChanged(Plugins::PluginNotificationFlags flag, const QVariant &data, void *pointer) override;
+
+public:
     virtual void injectCommandManager(Commands::ICommandManager *commandManager) override;
     virtual void injectUndoRedoManager(UndoRedo::IUndoRedoManager *undoRedoManager) override;
     virtual void injectArtworksSource(Common::IArtworksSource *artworksSource) override;

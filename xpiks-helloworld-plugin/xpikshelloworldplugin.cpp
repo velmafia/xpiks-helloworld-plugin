@@ -100,6 +100,21 @@ void XpiksHelloworldPlugin::disablePlugin() {
     m_HelloWorldService.disableService();
 }
 
+Plugins::PluginNotificationFlags XpiksHelloworldPlugin::getDesiredNotificationFlags() const {
+    return Plugins::PluginNotificationFlags::CurrentEditbleChanged;
+}
+
+void XpiksHelloworldPlugin::onPropertyChanged(Plugins::PluginNotificationFlags flag, const QVariant &data, void *pointer) {
+    if (flag == Plugins::PluginNotificationFlags::CurrentEditbleChanged) {
+        const auto &currentEditable = m_UIProvider->getCurrentEditable();
+        if (currentEditable) {
+            LOG_INFO << "Current editable now:" << currentEditable->getItemID();
+        } else {
+            LOG_INFO << "Current editable has been dropped";
+        }
+    }
+}
+
 void XpiksHelloworldPlugin::injectCommandManager(Commands::ICommandManager *commandManager) {
     Q_ASSERT(commandManager != NULL);
     m_CommandManager = commandManager;
