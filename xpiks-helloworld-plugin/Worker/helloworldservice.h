@@ -40,7 +40,7 @@ public:
     explicit HelloWorldService(QObject *parent = 0);
 
 public:
-    virtual void startService();
+    virtual void startService(const std::shared_ptr<Common::ServiceStartParams> &params);
     virtual void stopService();
 
     virtual bool isAvailable() const { return m_IsAvailable; }

@@ -9,7 +9,7 @@ HelloWorldService::HelloWorldService(QObject *parent) :
 {
 }
 
-void HelloWorldService::startService() {
+void HelloWorldService::startService(const std::shared_ptr<Common::ServiceStartParams> &params) {
     if (m_Worker != NULL) { return; }
 
     m_Worker = new HelloWorldWorker();

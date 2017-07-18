@@ -35,8 +35,8 @@ public:
 
     // IPluginAction interface
 public:
-    const QString &getActionName() const { return m_ActionName; }
-    int getActionID() const { return 123; }
+    virtual const QString &getActionName() const override { return m_ActionName; }
+    virtual int getActionID() const override { return 123; }
 
 private:
     QString m_ActionName;
