@@ -51,7 +51,7 @@ public:
     virtual const QString &getAuthor() const override { return m_Author; }
 
 public:
-    virtual const QVector<Plugins::IPluginAction*> &getExportedActions() const override { return m_MyActions; }
+    virtual const std::vector<std::shared_ptr<Plugins::IPluginAction> > &getExportedActions() const override { return m_MyActions; }
     virtual bool executeAction(int actionID) override;
 
 public:
@@ -61,7 +61,7 @@ public:
     virtual void disablePlugin() override;
 
 public:
-    virtual Plugins::PluginNotificationFlags getDesiredNotificationFlags() const override;
+    virtual Common::flag_t getDesiredNotificationFlags() const override;
     virtual void onPropertyChanged(Plugins::PluginNotificationFlags flag, const QVariant &data, void *pointer) override;
 
 public:
@@ -78,8 +78,8 @@ private:
 
     int m_InsertedTabID;
 
-    QVector<Plugins::IPluginAction*> m_MyActions;
-    QHash<int, Plugins::IPluginAction*> m_ActionsHash;
+    std::vector<std::shared_ptr<Plugins::IPluginAction> > m_MyActions;
+    QHash<int, std::shared_ptr<Plugins::IPluginAction> > m_ActionsHash;
 
     Commands::ICommandManager *m_CommandManager;
     UndoRedo::IUndoRedoManager *m_UndoRedoManager;

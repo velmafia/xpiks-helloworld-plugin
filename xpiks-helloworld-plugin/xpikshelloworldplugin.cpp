@@ -42,13 +42,13 @@ XpiksHelloworldPlugin::XpiksHelloworldPlugin(QObject *parent):
     m_Version = QLatin1String("v0.0.1");
     m_Author = QLatin1String("John Doe");
 
-    MakeUserHappyAction *makeUserHappy = new MakeUserHappyAction();
+    std::shared_ptr<Plugins::IPluginAction> makeUserHappy(new MakeUserHappyAction());
     m_MyActions.push_back(makeUserHappy);
     m_ActionsHash.insert(makeUserHappy->getActionID(), makeUserHappy);
 }
 
 XpiksHelloworldPlugin::~XpiksHelloworldPlugin() {
-    qDeleteAll(m_MyActions);
+    qDebug() << "Destruction...";
 }
 
 bool XpiksHelloworldPlugin::executeAction(int actionID) {
@@ -101,12 +101,12 @@ void XpiksHelloworldPlugin::disablePlugin() {
     m_HelloWorldService.disableService();
 }
 
-Plugins::PluginNotificationFlags XpiksHelloworldPlugin::getDesiredNotificationFlags() const {
-    return Plugins::PluginNotificationFlags::CurrentEditbleChanged;
+Common::flag_t XpiksHelloworldPlugin::getDesiredNotificationFlags() const {
+    return Common::flag_t(Plugins::PluginNotificationFlags::CurrentEditableChanged);
 }
 
 void XpiksHelloworldPlugin::onPropertyChanged(Plugins::PluginNotificationFlags flag, const QVariant &data, void *pointer) {
-    if (flag == Plugins::PluginNotificationFlags::CurrentEditbleChanged) {
+    if (flag == Plugins::PluginNotificationFlags::CurrentEditableChanged) {
         const auto &currentEditable = m_UIProvider->getCurrentEditable();
         if (currentEditable) {
             LOG_INFO << "Current editable now:" << currentEditable->getItemID();
