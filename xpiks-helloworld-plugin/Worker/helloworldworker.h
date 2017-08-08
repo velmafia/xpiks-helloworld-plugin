@@ -41,7 +41,7 @@ protected:
     virtual void workerStopped() {}
 
 protected:
-    virtual void notifyQueueIsEmpty() { emit queueIsEmpty(); }
+    virtual void onQueueIsEmpty() { emit queueIsEmpty(); }
     virtual void notifyStopped() { emit stopped(); }
 
 public slots:
