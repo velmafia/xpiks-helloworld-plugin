@@ -18,6 +18,7 @@ QMAKE_TARGET_COPYRIGHT = "Copyright (C) 2016-2017 Taras Kushnir"
 
 #DEFINES += XPIKSHELLOWORLDPLUGIN_LIBRARY
 INCLUDEPATH += "../../xpiks/src/xpiks-qt/"
+INCLUDEPATH += "../../xpiksapp/src/xpiks-qt/"
 
 SOURCES += xpikshelloworldplugin.cpp \
     Worker/helloworldworker.cpp \
@@ -36,3 +37,14 @@ DISTFILES += \
 
 RESOURCES += \
     helloworldresources.qrc
+
+# BRANCH_NAME=$$system(git rev-parse --abbrev-ref HEAD)
+BRANCH_NAME=tagged_keywords
+
+CONFIG(debug, debug|release)  {
+    message("Building debug")
+    # copy to Xpiks Plugins directory after build
+    DESTDIR = $$shell_path("~/Library/Application Support/Xpiks/Xpiks/$${BRANCH_NAME}/debug_XpiksPlugins/")
+} else {
+    message("Building release")
+}
