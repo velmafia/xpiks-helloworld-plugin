@@ -11,14 +11,13 @@ TEMPLATE = lib
 CONFIG += plugin
 CONFIG += c++11
 
-VERSION = 0.1.0.0
+VERSION = 0.0.1.0
 QMAKE_TARGET_PRODUCT = xpiks-helloworld-plugin
 QMAKE_TARGET_DESCRIPTION = "Sample implementation of a plugin for Xpiks"
 QMAKE_TARGET_COPYRIGHT = "Copyright (C) 2016-2017 Taras Kushnir"
 
 #DEFINES += XPIKSHELLOWORLDPLUGIN_LIBRARY
 INCLUDEPATH += "../../xpiks/src/xpiks-qt/"
-INCLUDEPATH += "../../xpiksapp/src/xpiks-qt/"
 
 SOURCES += xpikshelloworldplugin.cpp \
     Worker/helloworldworker.cpp \
