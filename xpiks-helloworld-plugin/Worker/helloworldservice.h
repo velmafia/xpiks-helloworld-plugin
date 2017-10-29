@@ -28,7 +28,7 @@ public:
     explicit HelloWorldService(QObject *parent = 0);
 
 public:
-    virtual void startService();
+    virtual void startService(const std::shared_ptr<Common::ServiceStartParams> &params);
     virtual void stopService();
 
     virtual bool isAvailable() const { return m_IsAvailable; }
@@ -36,7 +36,7 @@ public:
 
     virtual void submitItem(Common::IBasicArtwork *item);
     virtual void submitItem(Common::IBasicArtwork *item, Common::WarningsCheckFlags flags);
-    virtual void submitItems(const QVector<Common::IBasicArtwork*> &items);
+    virtual void submitItems(const std::vector<Common::IBasicArtwork*> &items);
 
 public:
     void disableService() { m_IsAvailable = false; }

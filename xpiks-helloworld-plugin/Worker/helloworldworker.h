@@ -29,7 +29,7 @@ protected:
     virtual void workerStopped() override {}
 
 protected:
-    virtual void notifyQueueIsEmpty() override { emit queueIsEmpty(); }
+    virtual void onQueueIsEmpty() override { emit queueIsEmpty(); }
 
 public slots:
     void process() { doWork(); }

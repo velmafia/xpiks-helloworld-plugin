@@ -19,7 +19,7 @@ HelloWorldService::HelloWorldService(QObject *parent) :
 {
 }
 
-void HelloWorldService::startService() {
+void HelloWorldService::startService(const std::shared_ptr<Common::ServiceStartParams> &) {
     if (m_Worker != NULL) { return; }
 
     m_Worker = new HelloWorldWorker();
@@ -60,15 +60,15 @@ void HelloWorldService::submitItem(Common::IBasicArtwork *item, Common::Warnings
     m_Worker->submitItem(command);
 }
 
-void HelloWorldService::submitItems(const QVector<Common::IBasicArtwork *> &items) {
+void HelloWorldService::submitItems(const std::vector<Common::IBasicArtwork *> &items) {
     if (m_Worker == NULL) { return; }
 
     std::vector<std::shared_ptr<HelloWorkerCommand> > commands;
 
-    int itemsLength = items.length();
+    const size_t itemsLength = items.size();
     commands.reserve(itemsLength);
 
-    for (int i = 0; i < itemsLength; ++i) {
+    for (size_t i = 0; i < itemsLength; ++i) {
         Common::IBasicArtwork *item = items.at(i);
         commands.emplace_back(new HelloWorkerCommand(item));
     }
