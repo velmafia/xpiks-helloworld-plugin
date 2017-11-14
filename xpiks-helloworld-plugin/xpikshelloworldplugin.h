@@ -25,7 +25,7 @@ class XpiksHelloworldPlugin :
         public Plugins::XpiksPluginInterface
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "Xpiks.Plugins.XpiksPluginInterface.v0.1" FILE "helloworld.json")
+    Q_PLUGIN_METADATA(IID "Xpiks.Plugins.XpiksPluginInterface.v0.0.1" FILE "helloworld.json")
     Q_INTERFACES(Plugins::XpiksPluginInterface)
 
 public:

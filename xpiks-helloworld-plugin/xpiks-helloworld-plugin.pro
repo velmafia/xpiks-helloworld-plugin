@@ -22,7 +22,8 @@ INCLUDEPATH += "../../xpiks/src/xpiks-qt/"
 SOURCES += xpikshelloworldplugin.cpp \
     Worker/helloworldworker.cpp \
     Worker/helloworldservice.cpp \
-    Model/helloworldmodel.cpp
+    Model/helloworldmodel.cpp \
+    ../../xpiks/src/xpiks-qt/Helpers/threadhelpers.cpp
 
 HEADERS += xpikshelloworldplugin.h \
     makeuserhappyaction.h \
@@ -37,13 +38,18 @@ DISTFILES += \
 RESOURCES += \
     helloworldresources.qrc
 
-# BRANCH_NAME=$$system(git rev-parse --abbrev-ref HEAD)
-BRANCH_NAME=tagged_keywords
+BRANCH_NAME=$$system(git rev-parse --abbrev-ref HEAD)
+#BRANCH_NAME=tagged_keywords
 
 CONFIG(debug, debug|release)  {
     message("Building debug")
-    # copy to Xpiks Plugins directory after build
-    DESTDIR = $$shell_path("~/Library/Application Support/Xpiks/Xpiks/$${BRANCH_NAME}/debug_XpiksPlugins/")
 } else {
     message("Building release")
+}
+
+macx {
+    CONFIG(debug, debug|release)  {
+        # copy to Xpiks Plugins directory after build
+        DESTDIR = $$shell_path("~/Library/Application Support/Xpiks/Xpiks/$${BRANCH_NAME}/debug_XpiksPlugins/")
+    }
 }
