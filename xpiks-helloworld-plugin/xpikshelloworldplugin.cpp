@@ -64,7 +64,7 @@ void XpiksHelloworldPlugin::initializePlugin() {
 
     Q_INIT_RESOURCE(helloworldresources);
 
-    m_CommandManager->addWarningsService(&m_HelloWorldService);
+    // m_CommandManager->addWarningsService(&m_HelloWorldService);
     m_InsertedTabID = m_UIProvider->addTab("qrc:/HelloWorldTabIcon.qml", "qrc:/HelloWorldTab.qml", nullptr);
 
     std::shared_ptr<Common::ServiceStartParams> emptyStartParams;

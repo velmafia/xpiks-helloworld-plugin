@@ -39,7 +39,7 @@ RESOURCES += \
     helloworldresources.qrc
 
 BRANCH_NAME=$$system(git rev-parse --abbrev-ref HEAD)
-#BRANCH_NAME=tagged_keywords
+#BRANCH_NAME=ui_upgrade_15
 
 CONFIG(debug, debug|release)  {
     message("Building debug")
