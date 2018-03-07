@@ -39,7 +39,7 @@ public:
     virtual const QString &getAuthor() const override { return m_Author; }
 
 public:
-    virtual const std::vector<std::shared_ptr<Plugins::IPluginAction> > &getExportedActions() const override { return m_MyActions; }
+    virtual std::vector<std::shared_ptr<Plugins::IPluginAction> > getExportedActions() const override { return m_MyActions; }
     virtual bool executeAction(int actionID) override;
 
 public:

@@ -50,6 +50,15 @@ CONFIG(debug, debug|release)  {
 macx {
     CONFIG(debug, debug|release)  {
         # copy to Xpiks Plugins directory after build
-        DESTDIR = $$shell_path("~/Library/Application Support/Xpiks/Xpiks/$${BRANCH_NAME}/debug_XpiksPlugins/")
+        DESTDIR = $$shell_path("~/Library/Application Support/Xpiks/Xpiks_debug/$${BRANCH_NAME}/plugins/")
+    }
+}
+
+win32 {
+    CONFIG(debug, debug|release)  {
+        APP_DATA = $$(APPDATA)
+        message(Deploying to $${APP_DATA})
+        # copy to Xpiks Plugins directory after build
+        DESTDIR = $$shell_path("$${APP_DATA}/Xpiks/Xpiks_debug/$${BRANCH_NAME}/plugins/")
     }
 }
