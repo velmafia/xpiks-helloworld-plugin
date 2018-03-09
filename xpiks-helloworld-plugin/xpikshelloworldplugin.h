@@ -43,10 +43,10 @@ public:
     virtual bool executeAction(int actionID) override;
 
 public:
-    virtual void initializePlugin() override;
-    virtual void finalizePlugin() override;
-    virtual void enablePlugin() override;
-    virtual void disablePlugin() override;
+    virtual bool initialize() override;
+    virtual void finalize() override;
+    virtual void enable() override;
+    virtual void disable() override;
 
 public:
     virtual Common::flag_t getDesiredNotificationFlags() const override;

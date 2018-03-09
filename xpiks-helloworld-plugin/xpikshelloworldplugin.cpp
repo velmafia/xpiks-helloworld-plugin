@@ -53,7 +53,7 @@ bool XpiksHelloworldPlugin::executeAction(int actionID) {
     return true;
 }
 
-void XpiksHelloworldPlugin::initializePlugin() {
+bool XpiksHelloworldPlugin::initialize() {
     qDebug() << "#";
 
     Q_ASSERT(m_CommandManager != NULL);
@@ -69,9 +69,11 @@ void XpiksHelloworldPlugin::initializePlugin() {
 
     std::shared_ptr<Common::ServiceStartParams> emptyStartParams;
     m_HelloWorldService.startService(emptyStartParams);
+
+    return true;
 }
 
-void XpiksHelloworldPlugin::finalizePlugin() {
+void XpiksHelloworldPlugin::finalize() {
     qDebug() << "#";
     m_HelloWorldService.stopService();
     if (m_InsertedTabID != -1) {
@@ -79,12 +81,12 @@ void XpiksHelloworldPlugin::finalizePlugin() {
     }
 }
 
-void XpiksHelloworldPlugin::enablePlugin() {
+void XpiksHelloworldPlugin::enable() {
     qDebug() << "#";
     m_HelloWorldService.enableService();
 }
 
-void XpiksHelloworldPlugin::disablePlugin() {
+void XpiksHelloworldPlugin::disable() {
     qDebug() << "#";
     m_HelloWorldService.disableService();
 }
