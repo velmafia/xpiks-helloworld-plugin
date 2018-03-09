@@ -21,12 +21,13 @@ INCLUDEPATH += "../../xpiks/src/xpiks-qt/"
 
 travis-ci | appveyor {
     INCLUDEPATH += "../../../../xpiks-qt/"
+    SOURCES += ../../../../xpiks-qt/Helpers/threadhelpers.cpp
 }
 
 SOURCES += xpikshelloworldplugin.cpp \
     Worker/helloworldworker.cpp \
     Worker/helloworldservice.cpp \
-    Model/helloworldmodel.cpp \
+    Model/helloworldmodel.cpp
     ../../xpiks/src/xpiks-qt/Helpers/threadhelpers.cpp
 
 HEADERS += xpikshelloworldplugin.h \
