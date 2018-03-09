@@ -62,3 +62,10 @@ win32 {
         DESTDIR = $$shell_path("$${APP_DATA}/Xpiks/Xpiks_debug/$${BRANCH_NAME}/plugins/")
     }
 }
+
+travis-ci {
+    CONFIG(debug, debug|release)  {
+        # copy to Xpiks Plugins directory after build
+        DESTDIR = $$shell_path("~/.local/share/Xpiks/Xpiks_debug/$${BRANCH_NAME}/plugins/")
+    }
+}
