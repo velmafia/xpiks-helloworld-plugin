@@ -17,18 +17,19 @@ QMAKE_TARGET_DESCRIPTION = "Sample implementation of a plugin for Xpiks"
 QMAKE_TARGET_COPYRIGHT = "Copyright (C) 2016-2018 Taras Kushnir"
 
 #DEFINES += XPIKSHELLOWORLDPLUGIN_LIBRARY
-INCLUDEPATH += "../../xpiks/src/xpiks-qt/"
 
 travis-ci | appveyor {
     INCLUDEPATH += "../../../../xpiks-qt/"
     SOURCES += ../../../../xpiks-qt/Helpers/threadhelpers.cpp
+} else {
+    INCLUDEPATH += "../../xpiks/src/xpiks-qt/"
+    SOURCES += ../../xpiks/src/xpiks-qt/Helpers/threadhelpers.cpp
 }
 
 SOURCES += xpikshelloworldplugin.cpp \
     Worker/helloworldworker.cpp \
     Worker/helloworldservice.cpp \
-    Model/helloworldmodel.cpp \
-    ../../xpiks/src/xpiks-qt/Helpers/threadhelpers.cpp
+    Model/helloworldmodel.cpp
 
 HEADERS += xpikshelloworldplugin.h \
     makeuserhappyaction.h \
