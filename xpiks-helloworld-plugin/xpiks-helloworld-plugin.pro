@@ -27,7 +27,7 @@ travis-ci | appveyor {
 SOURCES += xpikshelloworldplugin.cpp \
     Worker/helloworldworker.cpp \
     Worker/helloworldservice.cpp \
-    Model/helloworldmodel.cpp
+    Model/helloworldmodel.cpp \
     ../../xpiks/src/xpiks-qt/Helpers/threadhelpers.cpp
 
 HEADERS += xpikshelloworldplugin.h \

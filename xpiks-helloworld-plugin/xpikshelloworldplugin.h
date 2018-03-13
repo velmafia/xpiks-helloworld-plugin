@@ -43,7 +43,7 @@ public:
     virtual bool executeAction(int actionID) override;
 
 public:
-    virtual bool initialize() override;
+    virtual bool initialize(Common::ISystemEnvironment &environment) override;
     virtual void finalize() override;
     virtual void enable() override;
     virtual void disable() override;

@@ -53,8 +53,9 @@ bool XpiksHelloworldPlugin::executeAction(int actionID) {
     return true;
 }
 
-bool XpiksHelloworldPlugin::initialize() {
+bool XpiksHelloworldPlugin::initialize(Common::ISystemEnvironment &environment) {
     qDebug() << "#";
+    Q_UNUSED(environment);
 
     Q_ASSERT(m_CommandManager != NULL);
     Q_ASSERT(m_UndoRedoManager != NULL);
