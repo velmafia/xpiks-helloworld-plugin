@@ -49,8 +49,8 @@ public:
     virtual void disable() override;
 
 public:
-    virtual Common::flag_t getDesiredNotificationFlags() const override;
-    virtual void onPropertyChanged(Plugins::PluginNotificationFlags flag, const QVariant &data, void *pointer) override;
+    virtual Common::PluginNotificationFlags getDesiredNotificationFlags() const override;
+    virtual void onPropertyChanged(Common::PluginNotificationFlags flag, const QVariant &data, void *pointer) override;
 
 public:
     virtual void injectCommandManager(Commands::ICommandManager *commandManager) override;

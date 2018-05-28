@@ -92,12 +92,12 @@ void XpiksHelloworldPlugin::disable() {
     m_HelloWorldService.disableService();
 }
 
-Common::flag_t XpiksHelloworldPlugin::getDesiredNotificationFlags() const {
-    return Common::flag_t(Plugins::PluginNotificationFlags::CurrentEditableChanged);
+Common::PluginNotificationFlags XpiksHelloworldPlugin::getDesiredNotificationFlags() const {
+    return Common::PluginNotificationFlags::CurrentEditableChanged;
 }
 
-void XpiksHelloworldPlugin::onPropertyChanged(Plugins::PluginNotificationFlags flag, const QVariant &data, void *pointer) {
-    if (flag == Plugins::PluginNotificationFlags::CurrentEditableChanged) {
+void XpiksHelloworldPlugin::onPropertyChanged(Common::PluginNotificationFlags flag, const QVariant &data, void *pointer) {
+    if (flag == Common::PluginNotificationFlags::CurrentEditableChanged) {
         const auto &currentEditable = m_UIProvider->getCurrentEditable();
         if (currentEditable) {
             LOG_INFO << "Current editable now:" << currentEditable->getItemID();
