@@ -22,7 +22,7 @@ travis-ci | appveyor {
     INCLUDEPATH += "../../../../xpiks-qt/"
     SOURCES += \
             ../../../../xpiks-qt/Helpers/threadhelpers.cpp \
-            ../../../../xpiks/src/xpiks-qt/Common/logging.cpp
+            ../../../../xpiks-qt/Common/logging.cpp
 } else {
     INCLUDEPATH += "../../xpiks/src/xpiks-qt/"
     SOURCES += \
