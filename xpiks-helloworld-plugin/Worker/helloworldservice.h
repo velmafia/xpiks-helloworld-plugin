@@ -13,6 +13,7 @@
 
 #include <QObject>
 #include <QVector>
+#include <memory>
 #include <Common/flags.h>
 #include <Artworks/iartworkmetadata.h>
 
