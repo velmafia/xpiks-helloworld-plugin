@@ -20,26 +20,27 @@ QMAKE_TARGET_COPYRIGHT = "Copyright (C) 2016-2018 Taras Kushnir"
 
 travis-ci | appveyor {
     INCLUDEPATH += "../../../../xpiks-qt/"
-    SOURCES += ../../../../xpiks-qt/Helpers/threadhelpers.cpp
+    SOURCES += \
+            ../../../../xpiks-qt/Helpers/threadhelpers.cpp \
+            ../../../../xpiks/src/xpiks-qt/Common/logging.cpp
 } else {
     INCLUDEPATH += "../../xpiks/src/xpiks-qt/"
-    SOURCES += ../../xpiks/src/xpiks-qt/Helpers/threadhelpers.cpp
+    SOURCES += \
+            ../../xpiks/src/xpiks-qt/Helpers/threadhelpers.cpp \
+            ../../xpiks/src/xpiks-qt/Common/logging.cpp
 }
 
 SOURCES += xpikshelloworldplugin.cpp \
     Worker/helloworldworker.cpp \
     Worker/helloworldservice.cpp \
-    Model/helloworldmodel.cpp \
-    ../../xpiks/src/xpiks-qt/Common/logging.cpp
+    Model/helloworldmodel.cpp
 
 HEADERS += xpikshelloworldplugin.h \
     makeuserhappyaction.h \
     Worker/helloworldworker.h \
     Worker/helloworkercommand.h \
     Worker/helloworldservice.h \
-    Model/helloworldmodel.h \
-    ../../xpiks/src/xpiks-qt/Common/types.h \
-    ../../xpiks/src/xpiks-qt/Common/logging.h
+    Model/helloworldmodel.h
 
 DISTFILES += \
     helloworld.json
