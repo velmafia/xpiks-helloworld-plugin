@@ -19,7 +19,7 @@ HelloWorldService::HelloWorldService(QObject *parent) :
 {
 }
 
-void HelloWorldService::startService(const std::shared_ptr<Common::ServiceStartParams> &) {
+void HelloWorldService::startService() {
     if (m_Worker != NULL) { return; }
 
     m_Worker = new HelloWorldWorker();
@@ -48,32 +48,17 @@ void HelloWorldService::stopService() {
     }
 }
 
-void HelloWorldService::submitItem(Common::IBasicArtwork *item) {
+void HelloWorldService::submitItem(std::shared_ptr<Artworks::IArtworkMetadata> const &item) {
     Common::WarningsCheckFlags defaultFlags = Common::WarningsCheckFlags::All;
     this->submitItem(item, defaultFlags);
 }
 
-void HelloWorldService::submitItem(Common::IBasicArtwork *item, Common::WarningsCheckFlags flags) {
+void HelloWorldService::submitItem(std::shared_ptr<Artworks::IArtworkMetadata> const &item,
+                                   Common::WarningsCheckFlags flags) {
     if (m_Worker == NULL) { return; }
 
     std::shared_ptr<HelloWorkerCommand> command(new HelloWorkerCommand(item, flags));
     m_Worker->submitItem(command);
-}
-
-void HelloWorldService::submitItems(const std::vector<Common::IBasicArtwork *> &items) {
-    if (m_Worker == NULL) { return; }
-
-    std::vector<std::shared_ptr<HelloWorkerCommand> > commands;
-
-    const size_t itemsLength = items.size();
-    commands.reserve(itemsLength);
-
-    for (size_t i = 0; i < itemsLength; ++i) {
-        Common::IBasicArtwork *item = items.at(i);
-        commands.emplace_back(new HelloWorkerCommand(item));
-    }
-
-    m_Worker->submitItems(commands);
 }
 
 void HelloWorldService::workerDestroyed(QObject *object) {

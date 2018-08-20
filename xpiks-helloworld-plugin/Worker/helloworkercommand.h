@@ -11,23 +11,24 @@
 #ifndef HELLOWORKERCOMMAND_H
 #define HELLOWORKERCOMMAND_H
 
-#include <Common/ibasicartwork.h>
 #include <Common/flags.h>
+#include <Artworks/iartworkmetadata.h>
 
 class HelloWorkerCommand {
 public:
-    HelloWorkerCommand(Common::IBasicArtwork *basicArtwork, Common::WarningsCheckFlags flags = Common::WarningsCheckFlags::All) :
+    HelloWorkerCommand(std::shared_ptr<Artworks::IArtworkMetadata> const &basicArtwork,
+                       Common::WarningsCheckFlags flags = Common::WarningsCheckFlags::All) :
         m_BasicArtwork(basicArtwork),
         m_CommandFlags(flags)
     {
     }
 
 public:
-    Common::IBasicArtwork *getInnerItem() const { return m_BasicArtwork; }
+    std::shared_ptr<Artworks::IArtworkMetadata> const &getInnerItem() const { return m_BasicArtwork; }
     int getFlags() const { return (int)m_CommandFlags; }
 
 private:
-    Common::IBasicArtwork *m_BasicArtwork;
+    std::shared_ptr<Artworks::IArtworkMetadata> m_BasicArtwork;
     Common::WarningsCheckFlags m_CommandFlags;
 };
 

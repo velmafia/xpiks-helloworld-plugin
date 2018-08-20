@@ -26,7 +26,7 @@ public:
 protected:
     virtual bool initWorker() override;
     virtual void processOneItem(std::shared_ptr<HelloWorkerCommand> &item) override;
-    virtual void workerStopped() override {}
+    virtual void onWorkerStopped() override {}
 
 protected:
     virtual void onQueueIsEmpty() override { emit queueIsEmpty(); }

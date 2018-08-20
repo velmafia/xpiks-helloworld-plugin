@@ -54,10 +54,9 @@ public:
 
 public:
     virtual void injectCommandManager(Commands::ICommandManager *commandManager) override;
-    virtual void injectUndoRedoManager(UndoRedo::IUndoRedoManager *undoRedoManager) override;
-    virtual void injectArtworksSource(Common::IArtworksSource *artworksSource) override;
     virtual void injectUIProvider(Plugins::IUIProvider *uiProvider) override;
     virtual void injectPresetsManager(KeywordsPresets::IPresetsManager *presetsManager) override;
+    virtual void injectCurrentEditable(Models::ICurrentEditableSource *currentEditableSource) override;
 
 private:
     QString m_PrettyName;
@@ -70,10 +69,9 @@ private:
     QHash<int, std::shared_ptr<Plugins::IPluginAction> > m_ActionsHash;
 
     Commands::ICommandManager *m_CommandManager;
-    UndoRedo::IUndoRedoManager *m_UndoRedoManager;
     Plugins::IUIProvider *m_UIProvider;
-    Common::IArtworksSource *m_ArtworksSource;
     KeywordsPresets::IPresetsManager *m_PresetsManager;
+    Models::ICurrentEditableSource *m_CurrentEditableSource;
 
     HelloWorldService m_HelloWorldService;
     HelloWorldModel m_HelloWorldModel;

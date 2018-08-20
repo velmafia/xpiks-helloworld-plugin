@@ -19,9 +19,7 @@ XpiksHelloworldPlugin::XpiksHelloworldPlugin(QObject *parent):
     QObject(parent),
     m_InsertedTabID(-1),
     m_CommandManager(NULL),
-    m_UndoRedoManager(NULL),
     m_UIProvider(NULL),
-    m_ArtworksSource(NULL),
     m_PresetsManager(NULL)
 {
     qDebug() << "Construction...";
@@ -58,9 +56,7 @@ bool XpiksHelloworldPlugin::initialize(Common::ISystemEnvironment &environment) 
     Q_UNUSED(environment);
 
     Q_ASSERT(m_CommandManager != NULL);
-    Q_ASSERT(m_UndoRedoManager != NULL);
     Q_ASSERT(m_UIProvider != NULL);
-    Q_ASSERT(m_ArtworksSource != NULL);
     Q_ASSERT(m_PresetsManager != NULL);
 
     Q_INIT_RESOURCE(helloworldresources);
@@ -68,8 +64,7 @@ bool XpiksHelloworldPlugin::initialize(Common::ISystemEnvironment &environment) 
     // m_CommandManager->addWarningsService(&m_HelloWorldService);
     m_InsertedTabID = m_UIProvider->addTab("qrc:/HelloWorldTabIcon.qml", "qrc:/HelloWorldTab.qml", nullptr);
 
-    std::shared_ptr<Common::ServiceStartParams> emptyStartParams;
-    m_HelloWorldService.startService(emptyStartParams);
+    m_HelloWorldService.startService();
 
     return true;
 }
@@ -98,7 +93,7 @@ Common::PluginNotificationFlags XpiksHelloworldPlugin::getDesiredNotificationFla
 
 void XpiksHelloworldPlugin::onPropertyChanged(Common::PluginNotificationFlags flag, const QVariant &data, void *pointer) {
     if (flag == Common::PluginNotificationFlags::CurrentEditableChanged) {
-        const auto &currentEditable = m_UIProvider->getCurrentEditable();
+        const auto &currentEditable = m_CurrentEditableSource->getCurrentEditable();
         if (currentEditable) {
             LOG_INFO << "Current editable now:" << currentEditable->getItemID();
         } else {
@@ -108,26 +103,21 @@ void XpiksHelloworldPlugin::onPropertyChanged(Common::PluginNotificationFlags fl
 }
 
 void XpiksHelloworldPlugin::injectCommandManager(Commands::ICommandManager *commandManager) {
-    Q_ASSERT(commandManager != NULL);
+    Q_ASSERT(commandManager != nullptr);
     m_CommandManager = commandManager;
 }
 
-void XpiksHelloworldPlugin::injectUndoRedoManager(UndoRedo::IUndoRedoManager *undoRedoManager) {
-    Q_ASSERT(undoRedoManager != NULL);
-    m_UndoRedoManager = undoRedoManager;
-}
-
-void XpiksHelloworldPlugin::injectArtworksSource(Common::IArtworksSource *artworksSource) {
-    Q_ASSERT(artworksSource != NULL);
-    m_ArtworksSource = artworksSource;
-}
-
 void XpiksHelloworldPlugin::injectUIProvider(Plugins::IUIProvider *uiProvider) {
-    Q_ASSERT(uiProvider != NULL);
+    Q_ASSERT(uiProvider != nullptr);
     m_UIProvider = uiProvider;
 }
 
 void XpiksHelloworldPlugin::injectPresetsManager(KeywordsPresets::IPresetsManager *presetsManager) {
     Q_ASSERT(presetsManager != nullptr);
     m_PresetsManager = presetsManager;
+}
+
+void XpiksHelloworldPlugin::injectCurrentEditable(Models::ICurrentEditableSource *currentEditableSource) {
+    Q_ASSERT(currentEditableSource != nullptr);
+    m_CurrentEditableSource = currentEditableSource;
 }

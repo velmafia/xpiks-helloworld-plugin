@@ -29,14 +29,17 @@ travis-ci | appveyor {
 SOURCES += xpikshelloworldplugin.cpp \
     Worker/helloworldworker.cpp \
     Worker/helloworldservice.cpp \
-    Model/helloworldmodel.cpp
+    Model/helloworldmodel.cpp \
+    ../../xpiks/src/xpiks-qt/Common/logging.cpp
 
 HEADERS += xpikshelloworldplugin.h \
     makeuserhappyaction.h \
     Worker/helloworldworker.h \
     Worker/helloworkercommand.h \
     Worker/helloworldservice.h \
-    Model/helloworldmodel.h
+    Model/helloworldmodel.h \
+    ../../xpiks/src/xpiks-qt/Common/types.h \
+    ../../xpiks/src/xpiks-qt/Common/logging.h
 
 DISTFILES += \
     helloworld.json

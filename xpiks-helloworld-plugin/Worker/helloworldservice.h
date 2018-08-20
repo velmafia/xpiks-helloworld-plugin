@@ -13,30 +13,26 @@
 
 #include <QObject>
 #include <QVector>
-#include <Common/iservicebase.h>
-#include <Common/ibasicartwork.h>
 #include <Common/flags.h>
+#include <Artworks/iartworkmetadata.h>
 
 class HelloWorldWorker;
 
-class HelloWorldService :
-        public QObject,
-        public Common::IServiceBase<Common::IBasicArtwork, Common::WarningsCheckFlags>
+class HelloWorldService: public QObject
 {
     Q_OBJECT
 public:
     explicit HelloWorldService(QObject *parent = 0);
 
 public:
-    virtual void startService(const std::shared_ptr<Common::ServiceStartParams> &params);
-    virtual void stopService();
+    void startService();
+    void stopService();
 
-    virtual bool isAvailable() const { return m_IsAvailable; }
-    virtual bool isBusy() const { return false; }
+    bool isAvailable() const { return m_IsAvailable; }
+    bool isBusy() const { return false; }
 
-    virtual void submitItem(Common::IBasicArtwork *item);
-    virtual void submitItem(Common::IBasicArtwork *item, Common::WarningsCheckFlags flags);
-    virtual void submitItems(const std::vector<Common::IBasicArtwork*> &items);
+    void submitItem(std::shared_ptr<Artworks::IArtworkMetadata> const &item);
+    void submitItem(std::shared_ptr<Artworks::IArtworkMetadata> const &item, Common::WarningsCheckFlags flags);
 
 public:
     void disableService() { m_IsAvailable = false; }
