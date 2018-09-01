@@ -9,7 +9,7 @@ QT       -= gui
 TARGET = xpiks-helloworld-plugin
 TEMPLATE = lib
 CONFIG += plugin
-CONFIG += c++11
+CONFIG += c++14
 
 VERSION = 0.0.1.0
 QMAKE_TARGET_PRODUCT = xpiks-helloworld-plugin
