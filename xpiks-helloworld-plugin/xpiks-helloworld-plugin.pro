@@ -57,10 +57,12 @@ CONFIG(debug, debug|release)  {
     message("Building release")
 }
 
-macx {
-    CONFIG(debug, debug|release)  {
-        # copy to Xpiks Plugins directory after build
-        DESTDIR = $$shell_path("~/Library/Application Support/Xpiks/Xpiks_debug/$${BRANCH_NAME}/plugins/")
+!travis-ci {
+    macx {
+        CONFIG(debug, debug|release)  {
+            # copy to Xpiks Plugins directory after build
+            DESTDIR = $$shell_path("~/Library/Application Support/Xpiks/Xpiks_debug/$${BRANCH_NAME}/plugins/")
+        }
     }
 }
 
