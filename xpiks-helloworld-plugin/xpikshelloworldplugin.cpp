@@ -9,18 +9,26 @@
  */
 
 #include "xpikshelloworldplugin.h"
+
 #include <QDebug>
-#include <QThread>
+#include <QLatin1String>
+#include <QUrl>
+#include <QtGlobal>
+
+#include <Common/flags.h>
+#include <Common/logging.h>
+#include <Models/Editing/icurrenteditable.h>
+#include <Plugins/ipluginaction.h>
+#include <Plugins/iuiprovider.h>
+
 #include "makeuserhappyaction.h"
-#include "Worker/helloworldworker.h"
-#include "Worker/helloworkercommand.h"
 
 XpiksHelloworldPlugin::XpiksHelloworldPlugin(QObject *parent):
     QObject(parent),
     m_InsertedTabID(-1),
-    m_CommandManager(NULL),
-    m_UIProvider(NULL),
-    m_PresetsManager(NULL)
+    m_CommandManager(nullptr),
+    m_UIProvider(nullptr),
+    m_PresetsManager(nullptr)
 {
     qDebug() << "Construction...";
 
@@ -55,9 +63,9 @@ bool XpiksHelloworldPlugin::initialize(Common::ISystemEnvironment &environment) 
     qDebug() << "#";
     Q_UNUSED(environment);
 
-    Q_ASSERT(m_CommandManager != NULL);
-    Q_ASSERT(m_UIProvider != NULL);
-    Q_ASSERT(m_PresetsManager != NULL);
+    Q_ASSERT(m_CommandManager != nullptr);
+    Q_ASSERT(m_UIProvider != nullptr);
+    Q_ASSERT(m_PresetsManager != nullptr);
 
     Q_INIT_RESOURCE(helloworldresources);
 

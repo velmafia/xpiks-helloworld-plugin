@@ -11,11 +11,16 @@
 #ifndef HELLOWORLDSERVICE_H
 #define HELLOWORLDSERVICE_H
 
-#include <QObject>
-#include <QVector>
 #include <memory>
+
+#include <QObject>
+#include <QString>
+
 #include <Common/flags.h>
-#include <Artworks/iartworkmetadata.h>
+
+namespace Artworks {
+    class IArtworkMetadata;
+}
 
 class HelloWorldWorker;
 
@@ -23,7 +28,7 @@ class HelloWorldService: public QObject
 {
     Q_OBJECT
 public:
-    explicit HelloWorldService(QObject *parent = 0);
+    explicit HelloWorldService(QObject *parent = nullptr);
 
 public:
     void startService();

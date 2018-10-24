@@ -11,14 +11,40 @@
 #ifndef XPIKSHELLOWORLDPLUGIN_H
 #define XPIKSHELLOWORLDPLUGIN_H
 
+#include <memory>
+#include <vector>
+
+#include <QHash>
 #include <QObject>
 #include <QString>
-#include <QtPlugin>
+#include <QVariant>
+
+#include <Common/flags.h>
 #include <Plugins/xpiksplugininterface.h>
-#include <Plugins/ipluginaction.h>
-#include <Plugins/iuiprovider.h>
-#include "Worker/helloworldservice.h"
+
 #include "Model/helloworldmodel.h"
+#include "Worker/helloworldservice.h"
+
+namespace Commands {
+    class ICommandManager;
+}
+
+namespace Common {
+    class ISystemEnvironment;
+}
+
+namespace KeywordsPresets {
+    class IPresetsManager;
+}
+
+namespace Models {
+    class ICurrentEditableSource;
+}
+
+namespace Plugins {
+    class IPluginAction;
+    class IUIProvider;
+}
 
 class XpiksHelloworldPlugin :
         public QObject,
@@ -29,7 +55,7 @@ class XpiksHelloworldPlugin :
     Q_INTERFACES(Plugins::XpiksPluginInterface)
 
 public:
-    XpiksHelloworldPlugin(QObject *parent=0);
+    XpiksHelloworldPlugin(QObject *parent=nullptr);
     virtual ~XpiksHelloworldPlugin();
 
     // XpiksPluginInterface interface
