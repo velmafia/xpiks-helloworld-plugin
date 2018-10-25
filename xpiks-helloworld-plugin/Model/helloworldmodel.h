@@ -19,7 +19,7 @@ class HelloWorldModel : public QObject
     Q_OBJECT
     Q_PROPERTY(QString greetingText READ getGreetingText WRITE setGreetingText NOTIFY greetingTextChanged)
 public:
-    explicit HelloWorldModel(QObject *parent = 0);
+    explicit HelloWorldModel(QObject *parent = nullptr);
 
 public:
     const QString &getGreetingText() const { return m_GreetingText; }

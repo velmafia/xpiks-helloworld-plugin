@@ -9,18 +9,22 @@
  */
 
 #include "helloworldservice.h"
+
+#include <QDebug>
 #include <QThread>
-#include "helloworldworker.h"
-#include "helloworkercommand.h"
+#include <QtGlobal>
+
+#include "Worker/helloworkercommand.h"
+#include "Worker/helloworldworker.h"
 
 HelloWorldService::HelloWorldService(QObject *parent) :
     QObject(parent),
-    m_Worker(NULL)
+    m_Worker(nullptr)
 {
 }
 
 void HelloWorldService::startService() {
-    if (m_Worker != NULL) { return; }
+    if (m_Worker != nullptr) { return; }
 
     m_Worker = new HelloWorldWorker();
 
@@ -42,7 +46,7 @@ void HelloWorldService::startService() {
 }
 
 void HelloWorldService::stopService() {
-    if (m_Worker != NULL) {
+    if (m_Worker != nullptr) {
         qInfo() << "Stopping worker";
         m_Worker->stopWorking();
     }
@@ -55,7 +59,7 @@ void HelloWorldService::submitItem(std::shared_ptr<Artworks::IArtworkMetadata> c
 
 void HelloWorldService::submitItem(std::shared_ptr<Artworks::IArtworkMetadata> const &item,
                                    Common::WarningsCheckFlags flags) {
-    if (m_Worker == NULL) { return; }
+    if (m_Worker == nullptr) { return; }
 
     std::shared_ptr<HelloWorkerCommand> command(new HelloWorkerCommand(item, flags));
     m_Worker->submitItem(command);
@@ -63,5 +67,5 @@ void HelloWorldService::submitItem(std::shared_ptr<Artworks::IArtworkMetadata> c
 
 void HelloWorldService::workerDestroyed(QObject *object) {
     Q_UNUSED(object);
-    m_Worker = NULL;
+    m_Worker = nullptr;
 }

@@ -11,17 +11,22 @@
 #ifndef HELLOWORLDWORKER_H
 #define HELLOWORLDWORKER_H
 
-#include <QObject>
-#include <QHash>
 #include <memory>
+
+#include <QHash>
+#include <QObject>
+#include <QString>
+#include <QtGlobal>
+
 #include <Common/itemprocessingworker.h>
-#include "helloworkercommand.h"
+
+class HelloWorkerCommand;
 
 class HelloWorldWorker : public QObject, public Common::ItemProcessingWorker<HelloWorkerCommand>
 {
     Q_OBJECT
 public:
-    explicit HelloWorldWorker(QObject *parent = 0);
+    explicit HelloWorldWorker(QObject *parent = nullptr);
 
 protected:
     virtual bool initWorker() override;

@@ -11,8 +11,13 @@
 #ifndef HELLOWORKERCOMMAND_H
 #define HELLOWORKERCOMMAND_H
 
+#include <memory>
+
 #include <Common/flags.h>
-#include <Artworks/iartworkmetadata.h>
+
+namespace Artworks {
+    class IArtworkMetadata;
+}
 
 class HelloWorkerCommand {
 public:

@@ -11,8 +11,9 @@
 #ifndef MAKEUSERHAPPYACTION
 #define MAKEUSERHAPPYACTION
 
-#include <Plugins/ipluginaction.h>
 #include <QString>
+
+#include <Plugins/ipluginaction.h>
 
 class MakeUserHappyAction : public Plugins::IPluginAction {
 

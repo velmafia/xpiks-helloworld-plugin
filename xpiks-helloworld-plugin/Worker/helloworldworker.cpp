@@ -9,9 +9,12 @@
  */
 
 #include "helloworldworker.h"
-#include "helloworkercommand.h"
+
+#include <QStringList>
+
 #include <Artworks/iartworkmetadata.h>
-#include <Common/flags.h>
+
+#include "Worker/helloworkercommand.h"
 
 HelloWorldWorker::HelloWorldWorker(QObject *parent) : QObject(parent)
 {
