@@ -24,7 +24,7 @@ bool HelloWorldWorker::initWorker() {
     return true;
 }
 
-void HelloWorldWorker::processOneItem(std::shared_ptr<HelloWorkerCommand> &item) {
+void HelloWorldWorker::processOneItem(const std::shared_ptr<HelloWorkerCommand> &item) {
     auto &checkable = item->getInnerItem();
 
     int warningsFlags = 0;
